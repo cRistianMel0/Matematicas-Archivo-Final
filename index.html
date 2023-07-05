@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo Final Matematicas</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script>
+
+        function cambiarSignos() {
+            var operaciones = parseFloat(document.getElementById("operaciones").value)
+            switch (operaciones) {
+                case 1:
+                    simbolo = "+"
+                    break;
+                case 2:
+                    simbolo = "-"
+                    break;
+                case 3:
+                    simbolo = "*"
+                    break;
+                case 4:
+                    simbolo = "÷"
+                    break;
+            }
+            document.getElementById("simbolo").innerText = simbolo
+        }
+        function funcion() {
+            var operaciones = parseFloat(document.getElementById("operaciones").value)
+            var numerador1 = parseFloat(document.getElementById("numerador1").value)
+            var denomidador1 = parseFloat(document.getElementById("denomidador1").value)
+            var numerador2 = parseFloat(document.getElementById("numerador2").value)
+            var denomidador2 = parseFloat(document.getElementById("denomidador2").value)
+            switch (operaciones) {
+                case 1:
+                    if (denomidador1 == denomidador2) {
+                        var numerador3 = numerador1 + numerador2
+                        var denomidador3 = denomidador1
+                        alert("La suma es homogénea")
+                    } else {
+                        numerador3 = (numerador1 * denomidador2) + (denomidador1 * numerador2)
+                        denomidador3 = denomidador1 * denomidador2
+                        alert("La suma es heterogénea")
+                    }
+                    break;
+                case 2:
+                    if (denomidador1 == denomidador2) {
+                        numerador3 = numerador1 - numerador2
+                        denomidador3 = denomidador1
+                        alert("La resta es homogénea")
+                    } else {
+                        var numerador3 = (numerador1 * denomidador2) - (denomidador1 * numerador2)
+                        var denomidador3 = denomidador1 * denomidador2
+                        alert("La resta es heterogénea")
+                    }
+                    break;
+                case 3:
+                    numerador3 = numerador1 * numerador2
+                    denomidador3 = denomidador1 * denomidador2
+                    break;
+                case 4:
+                    numerador3 = numerador1 * denomidador2
+                    denomidador3 = denomidador1 * numerador2
+                    break;
+            }
+            document.getElementById("numerador3").value = numerador3
+            document.getElementById("denomidador3").value = denomidador3
+        }
+        function mcm() {
+            var num1 = parseFloat(document.getElementById("num1").value)
+            var num2 = parseFloat(document.getElementById("num2").value)
+
+            var mayor = num1 > num2 ? num1 : num2;
+            var i = mayor;
+
+            while (i % num1 !== 0 || i % num2 !== 0) {
+                i += mayor;
+                console.log(i)
+            }
+
+            document.getElementById("resultado").value = i
+
+        }
+        function mcd() {
+            var num1Mcd = parseFloat(document.getElementById("num1Mcd").value)
+            var num2Mcd = parseFloat(document.getElementById("num2Mcd").value)
+
+            if (num1Mcd === 0 || num2Mcd === 0) {
+                document.getElementById("resultadoMcd").value = num1Mcd + num2Mcd
+            }
+            if (num1Mcd > num2Mcd) {
+                var temp = num1Mcd;
+                num1Mcd = num2Mcd;
+                num2Mcd = temp;
+            }
+            while (num1Mcd !== num2Mcd) {
+                var diferencia = num2Mcd - num1Mcd;
+                num2Mcd = diferencia > num1Mcd ? diferencia : num1Mcd;
+                num1Mcd = diferencia > num1Mcd ? num1Mcd : diferencia;
+            }
+            console.log(num1Mcd)
+            document.getElementById("resultadoMcd").value = num1Mcd 
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="fatContainer">
+        <fieldset>
+            <legend>Operaciones de Fracciones</legend>
+            <div class="operacionFracciones">
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <form action="" class="formOpciones">
+                        <select name="operaciones" id="operaciones">
+                            <option value="1-">Suma</option>
+                            <option value="2-">Resta</option>
+                            <option value="3-">Multiplicación</option>
+                            <option value="4-">División</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="fracciones">
+                    <div>
+                        <input type="number" class="inputFracciones" id="numerador1">
+                        <p>______</p>
+                        <input type="number" class="inputFracciones" id="denomidador1">
+                    </div>
+                    <div class="containerSimbolo">
+                        <label for="" id="simbolo">+</label>
+                    </div>
+                    <div>
+                        <input type="number" class="inputFracciones" id="numerador2">
+                        <p>______</p>
+                        <input type="number" class="inputFracciones" id="denomidador2">
+                    </div>
+                    <div class="containerSimbolo">
+                        <label for="">=</label>
+                    </div>
+                    <div>
+                        <input type="number" class="inputFracciones" disabled id="numerador3">
+                        <p>______</p>
+                        <input type="number" class="inputFracciones" disabled id="denomidador3">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <input type="button" value="Calcular" onclick="funcion(); cambiarSignos()">
+            </div>
+        </fieldset>
+        <div class="containerMinimoComunMultiplo">
+            <fieldset style="height: 190px;">
+                <legend>Mínimo Común Múltiplo</legend>
+                <div class="minimoComunMultiplo">
+                    <div class="containerSimbolo">
+                        <label for="">M.C.M(</label>
+                    </div>
+                    <div>
+                        <input type="number" class="inputFracciones" id="num1">
+                    </div>
+                    <div class="containerSimbolo">
+                        <label for="">,</label>
+                    </div>
+                    <div>
+                        <input type="number" class="inputFracciones" id="num2">
+                    </div>
+                    <div class="containerSimbolo">
+                        <label for="">) =</label>
+                    </div>
+                    <div>
+                        <input type="number" class="inputFracciones" disabled id="resultado">
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                    <input type="button" value="Calcular" onclick="mcm()" style="margin-top: 46px;">
+                </div>
+            </fieldset>
+        </div>
+        <div class="containerMaximoComunDivisior" >
+            <fieldset style="height: 190px;">
+                <legend>Máximo Común Divisor</legend>
+                <div class="maximoComunDivisior">
+                    <div class="containerSimbolo">
+                        <label for="">M.C.D(</label>
+                    </div>
+                    <div>
+                        <input type="number" class="inputFracciones" id="num1Mcd">
+                    </div>
+                    <div class="containerSimbolo">
+                        <label for="">,</label>
+                    </div>
+                    <div>
+                        <input type="number" class="inputFracciones" id="num2Mcd">
+                    </div>
+                    <div class="containerSimbolo">
+                        <label for="">) =</label>
+                    </div>
+                    <div>
+                        <input type="number" class="inputFracciones" disabled id="resultadoMcd">
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+                    <input type="button" value="Calcular" onclick="mcd()" style="margin-top: 46px;">
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</body>
+
+</html>

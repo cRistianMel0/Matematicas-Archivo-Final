@@ -1,0 +1,64 @@
+.fatContainer{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-color: rgb(212, 228, 222);
+}
+.formOpciones{
+    margin-bottom: 10px;
+}
+.inputFracciones{
+    width: 40px;
+    height: 30px;
+}
+p{
+    margin-top: 0px;
+}
+.fracciones{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+.containerSimbolo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.minimoComunMultiplo{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    margin-top: 60px;
+    font-size: 30px;
+}
+.maximoComunDivisior{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto; 
+    margin-top: 60px;
+    font-size: 30px;
+}
+option{
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+input{
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+select{
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+legend{
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 20px;
+}
+fieldset{
+    text-align: center;
+    border-radius: 20px;
+    border: 5px solid gray;
+}
